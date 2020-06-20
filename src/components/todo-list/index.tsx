@@ -10,7 +10,7 @@ export function TodoList({ todos }: TodoListProps) {
   return (
     <>
       {[...todos]
-        .sort((a, b) => (a.checked ? -1 : b.checked ? 1 : 0))
+        .sort((a, b) => (a.checked ? 1 : b.checked ? -1 : 0))
         .map(todo => (
           <TodoItem todo={todo} key={todo.id} />
         ))}
