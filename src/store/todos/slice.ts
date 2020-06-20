@@ -9,7 +9,7 @@ const todosSlice = createSlice({
       state.concat(action.payload),
     changeTodoStatus: (state, action: PayloadAction<TodoId>) =>
       state.map(todo =>
-        todo.id === action.payload ? { ...todo, checked: !todo.checked } : todo
+        todo.id === action.payload ? { ...todo, done: !todo.done } : todo
       ),
     removeTodo: (state, action: PayloadAction<TodoId>) =>
       state.map(todo =>
@@ -18,7 +18,7 @@ const todosSlice = createSlice({
     reviveTodo: (state, action: PayloadAction<TodoId>) =>
       state.map(todo =>
         todo.id === action.payload
-          ? { ...todo, checked: false, removed: false }
+          ? { ...todo, done: false, removed: false }
           : todo
       ),
     deleteTodo: (state, action: PayloadAction<TodoId>) =>

@@ -11,16 +11,14 @@ interface TodoListProps {
 export function TodoList({ todos }: TodoListProps) {
   const dispatch = useDispatch();
   const removeCompleted = () => {
-    todos
-      .filter(todo => todo.checked)
-      .map(todo => dispatch(removeTodo(todo.id)));
+    todos.filter(todo => todo.done).map(todo => dispatch(removeTodo(todo.id)));
   };
 
   return (
     <>
       <button onClick={removeCompleted}>remove completed</button>
       {[...todos]
-        .sort((a, b) => (a.checked ? 1 : b.checked ? -1 : 0))
+        .sort((a, b) => (a.done ? 1 : b.done ? -1 : 0))
         .map(todo => (
           <TodoItem todo={todo} key={todo.id} />
         ))}

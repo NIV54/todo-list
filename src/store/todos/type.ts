@@ -3,6 +3,6 @@ export type TodoId = string;
 export interface Todo {
   id: TodoId;
   content: string;
-  checked: boolean;
+  done: boolean;
   removed: boolean;
 }

@@ -16,9 +16,7 @@ export function AddTodo() {
     <form
       onSubmit={handleSubmit(({ content }: FormInput) => {
         setValue("content", "");
-        dispatch(
-          addTodo({ content, checked: false, removed: false, id: v4() })
-        );
+        dispatch(addTodo({ content, done: false, removed: false, id: v4() }));
       })}
     >
       <input type="text" name="content" ref={register} />

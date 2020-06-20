@@ -8,7 +8,7 @@ interface TodoItemProps {
 }
 
 export function TodoItem({
-  todo: { checked, content, removed, id },
+  todo: { done: checked, content, removed, id },
 }: TodoItemProps) {
   const dispatch = useDispatch();
   return (
