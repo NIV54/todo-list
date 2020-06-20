@@ -10,11 +10,12 @@ interface FormInput {
 }
 
 export function AddTodo() {
-  const { register, handleSubmit } = useForm<FormInput>();
+  const { register, handleSubmit, setValue } = useForm<FormInput>();
   const dispatch = useDispatch();
   return (
     <form
       onSubmit={handleSubmit(({ content }: FormInput) => {
+        setValue("content", "");
         dispatch(
           addTodo({ content, checked: false, removed: false, id: v4() })
         );
