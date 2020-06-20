@@ -9,12 +9,6 @@ import { REMOVED_ROUTE } from "./routes";
 
 function App() {
   const location = useLocation();
-  useEffect(() => {
-    if (location) {
-      const { pathname } = location;
-      console.log(pathname);
-    }
-  }, [location]);
   const todos = useSelector<Store, Todo[]>(state =>
     state.todos.filter(todo =>
       location.pathname === REMOVED_ROUTE ? todo.removed : !todo.removed
@@ -22,9 +16,9 @@ function App() {
   );
   return (
     <>
-      <AddTodo />
       <Link to="/">New Todos</Link>
       <Link to={REMOVED_ROUTE}>Done Todos</Link>
+      <AddTodo />
       <TodoList todos={todos} />
     </>
   );

@@ -16,7 +16,10 @@ export function TodoList({ todos }: TodoListProps) {
 
   return (
     <>
-      <button onClick={removeCompleted}>remove completed</button>
+      <h2>Todos</h2>
+      {todos.length > 0 && (
+        <button onClick={removeCompleted}>remove completed</button>
+      )}
       {[...todos]
         .sort((a, b) => (a.done ? 1 : b.done ? -1 : 0))
         .map(todo => (
