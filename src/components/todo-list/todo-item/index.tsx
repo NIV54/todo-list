@@ -1,6 +1,6 @@
 import React from "react";
-import { Todo } from "../../store/todos/type";
-import { reviveTodo } from "../../store/todos/slice";
+import { Todo } from "../../../store/todos/type";
+import { reviveTodo } from "../../../store/todos/slice";
 import { useDispatch } from "react-redux";
 
 interface TodoItemProps {
