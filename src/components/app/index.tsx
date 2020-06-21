@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Todo } from "../../store/todos/type";
 import { Store } from "../../store";
 import { useSelector } from "react-redux";
 import { AddTodo } from "../todo-list/add-todo";
 import { TodoList } from "../todo-list";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Route } from "react-router-dom";
 import { REMOVED_ROUTE } from "./routes";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
     <>
       <Link to="/">New Todos</Link>
       <Link to={REMOVED_ROUTE}>Done Todos</Link>
-      <AddTodo />
+      <Route exact path={"/"} component={AddTodo} />
       <TodoList todos={todos} />
     </>
   );
