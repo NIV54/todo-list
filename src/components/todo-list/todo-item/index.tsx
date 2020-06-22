@@ -1,6 +1,10 @@
 import React from "react";
 import { Todo } from "../../../store/todos/type";
-import { reviveTodo, changeTodoStatus } from "../../../store/todos/slice";
+import {
+  reviveTodo,
+  changeTodoStatus,
+  deleteTodo,
+} from "../../../store/todos/slice";
 import { useDispatch } from "react-redux";
 
 interface TodoItemProps {
@@ -8,7 +12,7 @@ interface TodoItemProps {
 }
 
 export function TodoItem({
-  todo: { done: checked, content, removed, id },
+  todo: { done, content, removed, id },
 }: TodoItemProps) {
   const dispatch = useDispatch();
   return (
@@ -16,13 +20,16 @@ export function TodoItem({
       {!removed && (
         <input
           type="checkbox"
-          value={checked.toString()}
+          checked={done}
           onClick={() => dispatch(changeTodoStatus(id))}
         />
       )}
       <span>{content}</span>
       {removed && (
-        <button onClick={() => dispatch(reviveTodo(id))}>revive</button>
+        <>
+          <button onClick={() => dispatch(reviveTodo(id))}>revive</button>
+          <button onClick={() => dispatch(deleteTodo(id))}>delete</button>
+        </>
       )}
     </>
   );
